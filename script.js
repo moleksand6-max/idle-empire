@@ -1,7 +1,7 @@
 let coins = 0;
-let income = 1; // доход в секунду
+let income = 1;
 
-// загрузка сохранения
+// загрузка
 if (localStorage.getItem("coins")) {
   coins = Number(localStorage.getItem("coins"));
 }
@@ -10,23 +10,10 @@ if (localStorage.getItem("income")) {
   income = Number(localStorage.getItem("income"));
 }
 
+// обновление UI
 function updateUI() {
   document.getElementById("coins").innerText = coins;
 }
-
-// кнопка получения монет
-function addCoins() {
-  coins += income;
-  updateUI();
-  save();
-}
-
-// пассивный доход (каждую секунду)
-setInterval(() => {
-  coins += income;
-  updateUI();
-  save();
-}, 1000);
 
 // сохранение
 function save() {
@@ -34,11 +21,29 @@ function save() {
   localStorage.setItem("income", income);
 }
 
+// кнопка получения
+function addCoins() {
+  coins += income;
+  updateUI();
+  save();
+}
+
+// улучшение
 function upgrade() {
   if (coins >= 10) {
     coins -= 10;
     income += 1;
-    save();
     updateUI();
+    save();
   }
 }
+
+// авто доход
+setInterval(() => {
+  coins += income;
+  updateUI();
+  save();
+}, 1000);
+
+// старт
+updateUI();
