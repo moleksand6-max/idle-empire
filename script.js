@@ -1,18 +1,15 @@
 let coins = 0;
 let income = 1;
 
-// загрузка
-if (localStorage.getItem("coins")) {
-  coins = Number(localStorage.getItem("coins"));
-}
+// загрузка данных
+function load() {
+  if (localStorage.getItem("coins")) {
+    coins = Number(localStorage.getItem("coins"));
+  }
 
-if (localStorage.getItem("income")) {
-  income = Number(localStorage.getItem("income"));
-}
-
-// обновление UI
-function updateUI() {
-  document.getElementById("coins").innerText = coins;
+  if (localStorage.getItem("income")) {
+    income = Number(localStorage.getItem("income"));
+  }
 }
 
 // сохранение
@@ -21,7 +18,15 @@ function save() {
   localStorage.setItem("income", income);
 }
 
-// кнопка получения
+// обновление экрана
+function updateUI() {
+  const coinsElement = document.getElementById("coins");
+  if (coinsElement) {
+    coinsElement.innerText = coins;
+  }
+}
+
+// кнопка
 function addCoins() {
   coins += income;
   updateUI();
@@ -46,4 +51,5 @@ setInterval(() => {
 }, 1000);
 
 // старт
+load();
 updateUI();
