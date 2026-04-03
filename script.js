@@ -33,3 +33,12 @@ function save() {
   localStorage.setItem("coins", coins);
   localStorage.setItem("income", income);
 }
+
+function upgrade() {
+  if (coins >= 10) {
+    coins -= 10;
+    income += 1;
+    save();
+    updateUI();
+  }
+}
