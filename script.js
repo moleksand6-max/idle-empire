@@ -3,13 +3,13 @@ let income = 1;
 
 // загрузка
 function load() {
-  if (localStorage.getItem("coins")) {
-    coins = Number(localStorage.getItem("coins"));
-  }
+  const savedCoins = localStorage.getItem("coins");
+  const savedIncome = localStorage.getItem("income");
 
-  if (localStorage.getItem("income")) {
-    income = Number(localStorage.getItem("income"));
-  }
+  if (savedCoins) coins = parseFloat(savedCoins);
+  if (savedIncome) income = parseFloat(savedIncome);
+
+  updateUI();
 }
 
 // сохранение
@@ -18,16 +18,9 @@ function save() {
   localStorage.setItem("income", income);
 }
 
-// уровень (всегда считается)
-function getLevel() {
-  return Math.floor(coins / 50) + 1;
-}
-
-// обновление UI
+// обновление интерфейса
 function updateUI() {
-  document.getElementById("coins").innerText = coins;
-  document.getElementById("level").innerText = getLevel();
-  document.getElementById("income").innerText = income;
+  document.getElementById("coins").innerText = coins.toFixed(0);
 }
 
 // получение монет
@@ -37,7 +30,7 @@ function addCoins() {
   save();
 }
 
-// улучшение
+// улучшение фермы
 function upgrade() {
   if (coins >= 10) {
     coins -= 10;
@@ -47,13 +40,14 @@ function upgrade() {
   }
 }
 
-// авто доход
+// авто-доход
 setInterval(() => {
   coins += income;
   updateUI();
   save();
 }, 1000);
 
+// магазин
 function buyHouse() {
   if (coins >= 50) {
     coins -= 50;
@@ -70,8 +64,7 @@ function buyFactory() {
     updateUI();
     save();
   }
-  }
+}
 
-// запуск
+// старт
 load();
-updateUI();
