@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Empire - Кликер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Game Screen -->
+        <div id="gameScreen" class="screen active">
+            <div class="header">
+                <div class="coins-display">
+                    <span class="coin-icon">💰</span>
+                    <span id="coinsAmount">0</span>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="click-area">
+                    <button id="clickButton" class="click-button">
+                        <span class="button-icon">👆</span>
+                    </button>
+                    <p class="click-damage">+<span id="damagePerClick">1</span></p>
+                </div>
+            </div>
+
+            <div class="passive-income">
+                <p>Доход в сек: <span id="incomePerSec">0</span> 💰</p>
+            </div>
+        </div>
+
+        <!-- Upgrades Screen -->
+        <div id="upgradesScreen" class="screen">
+            <div class="header">
+                <h2>Прокачка</h2>
+            </div>
+            <div id="upgradesList" class="upgrades-list"></div>
+        </div>
+
+        <!-- Shop Screen -->
+        <div id="shopScreen" class="screen">
+            <div class="header">
+                <h2>Магазин</h2>
+            </div>
+            <div id="shopList" class="shop-list"></div>
+        </div>
+
+        <!-- Stats Screen -->
+        <div id="statsScreen" class="screen">
+            <div class="header">
+                <h2>Статистика</h2>
+            </div>
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span>Всего монет заработано:</span>
+                    <span id="totalEarned">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Всего кликов:</span>
+                    <span id="totalClicks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Время игры:</span>
+                    <span id="playTime">0ч 0м</span>
+                </div>
+                <div class="stat-item">
+                    <span>Уровень прокачки:</span>
+                    <span id="upgradeLevel">0</span>
+                </div>
+                <button id="resetButton" class="reset-button">Сбросить прогресс</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-button active" data-screen="gameScreen">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-text">Главная</span>
+        </button>
+        <button class="nav-button" data-screen="upgradesScreen">
+            <span class="nav-icon">⬆️</span>
+            <span class="nav-text">Прокачка</span>
+        </button>
+        <button class="nav-button" data-screen="shopScreen">
+            <span class="nav-icon">🛍️</span>
+            <span class="nav-text">Магазин</span>
+        </button>
+        <button class="nav-button" data-screen="statsScreen">
+            <span class="nav-icon">📊</span>
+            <span class="nav-text">Статистика</span>
+        </button>
+    </nav>
+
+    <script src="game.js"></script>
+</body>
+</html>
