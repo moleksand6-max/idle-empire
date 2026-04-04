@@ -18,7 +18,7 @@ function save() {
   localStorage.setItem("income", income);
 }
 
-// уровень (НЕ хранится, а считается)
+// уровень (всегда считается)
 function getLevel() {
   return Math.floor(coins / 50) + 1;
 }
