@@ -22,7 +22,9 @@ function save() {
 function updateUI() {
   document.getElementById("coins").innerText = coins.toFixed(0);
   document.getElementById("income").innerText = income.toFixed(0);
-  document.getElementById("level").innerText = Math.floor(coins / 100) + 1;
+  
+  // уровень зависит от дохода
+  document.getElementById("level").innerText = Math.floor(income / 5) + 1;
 }
 
 // получение монет
@@ -42,7 +44,7 @@ function upgrade() {
   }
 }
 
-// авто-доход
+// авто доход
 setInterval(() => {
   coins += income;
   updateUI();
@@ -67,6 +69,12 @@ function buyFactory() {
     save();
   }
 }
+
+// делаем функции доступными для кнопок
+window.addCoins = addCoins;
+window.upgrade = upgrade;
+window.buyHouse = buyHouse;
+window.buyFactory = buyFactory;
 
 // старт
 load();
