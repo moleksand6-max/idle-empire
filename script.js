@@ -6,8 +6,8 @@ function load() {
   const savedCoins = localStorage.getItem("coins");
   const savedIncome = localStorage.getItem("income");
 
-  if (savedCoins) coins = parseFloat(savedCoins);
-  if (savedIncome) income = parseFloat(savedIncome);
+  if (savedCoins !== null) coins = Number(savedCoins);
+  if (savedIncome !== null) income = Number(savedIncome);
 
   updateUI();
 }
@@ -20,11 +20,12 @@ function save() {
 
 // обновление интерфейса
 function updateUI() {
-  document.getElementById("coins").innerText = coins.toFixed(0);
-  document.getElementById("income").innerText = income.toFixed(0);
-  
+  document.getElementById("coins").innerText = coins;
+  document.getElementById("income").innerText = income;
+
   // уровень зависит от дохода
-  document.getElementById("level").innerText = Math.floor(income / 5) + 1;
+  let level = Math.floor(income / 5) + 1;
+  document.getElementById("level").innerText = level;
 }
 
 // получение монет
@@ -43,13 +44,6 @@ function upgrade() {
     save();
   }
 }
-
-// авто доход
-setInterval(() => {
-  coins += income;
-  updateUI();
-  save();
-}, 1000);
 
 // магазин
 function buyHouse() {
@@ -70,11 +64,18 @@ function buyFactory() {
   }
 }
 
-// делаем функции доступными для кнопок
+// авто доход
+setInterval(() => {
+  coins += income;
+  updateUI();
+  save();
+}, 1000);
+
+// старт
+load();
+
+// чтобы кнопки точно работали
 window.addCoins = addCoins;
 window.upgrade = upgrade;
 window.buyHouse = buyHouse;
 window.buyFactory = buyFactory;
-
-// старт
-load();
