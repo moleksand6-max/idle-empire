@@ -1,6 +1,5 @@
 let coins = 0;
 let income = 1;
-let level = 1;
 
 // загрузка
 function load() {
@@ -11,32 +10,29 @@ function load() {
   if (localStorage.getItem("income")) {
     income = Number(localStorage.getItem("income"));
   }
-
-  if (localStorage.getItem("level")) {
-    level = Number(localStorage.getItem("level"));
-  }
-
-  // 🔥 ВАЖНО — пересчитать уровень после загрузки
-  level = Math.floor(coins / 50) + 1;
 }
 
 // сохранение
 function save() {
   localStorage.setItem("coins", coins);
   localStorage.setItem("income", income);
-  localStorage.setItem("level", level);
+}
+
+// уровень (НЕ хранится, а считается)
+function getLevel() {
+  return Math.floor(coins / 50) + 1;
 }
 
 // обновление UI
 function updateUI() {
   document.getElementById("coins").innerText = coins;
-  document.getElementById("level").innerText = level;
+  document.getElementById("level").innerText = getLevel();
+  document.getElementById("income").innerText = income;
 }
 
 // получение монет
 function addCoins() {
   coins += income;
-  checkLevel();
   updateUI();
   save();
 }
@@ -51,21 +47,9 @@ function upgrade() {
   }
 }
 
-// проверка уровня
-function checkLevel() {
-  let newLevel = Math.floor(coins / 50) + 1;
-
-  if (newLevel > level) {
-    level = newLevel;
-    income += 1;
-    alert("🎉 Новый уровень: " + level);
-  }
-}
-
 // авто доход
 setInterval(() => {
   coins += income;
-  checkLevel();
   updateUI();
   save();
 }, 1000);
