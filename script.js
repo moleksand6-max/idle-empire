@@ -15,6 +15,9 @@ function load() {
   if (localStorage.getItem("level")) {
     level = Number(localStorage.getItem("level"));
   }
+
+  // 🔥 ВАЖНО — пересчитать уровень после загрузки
+  level = Math.floor(coins / 50) + 1;
 }
 
 // сохранение
@@ -54,7 +57,7 @@ function checkLevel() {
 
   if (newLevel > level) {
     level = newLevel;
-    income += 1; // бонус за уровень
+    income += 1;
     alert("🎉 Новый уровень: " + level);
   }
 }
