@@ -8,5 +8,6 @@ body {
 button {
   padding: 15px;
   font-size: 18px;
-  margin-top: 20px;
+  margin: 10px;
+  cursor: pointer;
 }
