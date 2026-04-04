@@ -21,6 +21,8 @@ function save() {
 // обновление интерфейса
 function updateUI() {
   document.getElementById("coins").innerText = coins.toFixed(0);
+  document.getElementById("income").innerText = income.toFixed(0);
+  document.getElementById("level").innerText = Math.floor(coins / 100) + 1;
 }
 
 // получение монет
