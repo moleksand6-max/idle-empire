@@ -54,6 +54,24 @@ setInterval(() => {
   save();
 }, 1000);
 
+function buyHouse() {
+  if (coins >= 50) {
+    coins -= 50;
+    income += 5;
+    updateUI();
+    save();
+  }
+}
+
+function buyFactory() {
+  if (coins >= 200) {
+    coins -= 200;
+    income += 20;
+    updateUI();
+    save();
+  }
+  }
+
 // запуск
 load();
 updateUI();
