@@ -1,25 +1,29 @@
 body {
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
   margin: 0;
   padding: 20px;
 }
 
-/* заголовок */
 h1 {
-  margin-bottom: 20px;
   font-size: 40px;
 }
 
-/* текст */
 p {
   font-size: 22px;
-  margin: 10px;
 }
 
-/* кнопки */
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
 button {
   display: block;
   width: 250px;
@@ -35,23 +39,11 @@ button {
   transition: 0.2s;
 }
 
-/* эффект нажатия */
-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 #1b5e20;
-}
-
-/* эффект наведения */
 button:hover {
   background: linear-gradient(145deg, #66bb6a, #388e3c);
 }
 
-/* контейнер */
-.container {
-  max-width: 400px;
-  margin: auto;
-  background: rgba(0,0,0,0.4);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  }
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #1b5e20;
+}
