@@ -1,13 +1,57 @@
 body {
   text-align: center;
-  font-family: Arial;
-  background: #1e1e1e;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
+  margin: 0;
+  padding: 20px;
 }
 
-button {
-  padding: 15px;
-  font-size: 18px;
-  margin: 10px;
-  cursor: pointer;
+/* заголовок */
+h1 {
+  margin-bottom: 20px;
+  font-size: 40px;
 }
+
+/* текст */
+p {
+  font-size: 22px;
+  margin: 10px;
+}
+
+/* кнопки */
+button {
+  display: block;
+  width: 250px;
+  margin: 15px auto;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #4CAF50, #2e7d32);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1b5e20;
+  transition: 0.2s;
+}
+
+/* эффект нажатия */
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #1b5e20;
+}
+
+/* эффект наведения */
+button:hover {
+  background: linear-gradient(145deg, #66bb6a, #388e3c);
+}
+
+/* контейнер */
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
